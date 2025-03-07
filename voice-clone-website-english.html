@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThirdVoiceClone - AI Voice Cloning Technology</title>
+    <link rel="canonical" href="https://thirdvoiceclone.example.com" />
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0071e3;
+            --secondary-color: #1d1d1f;
+            --background-color: #f5f5f7;
+            --light-gray: #86868b;
+            --white: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation bar */
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, var(--background-color) 100%);
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #0062c1;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 113, 227, 0.1);
+        }
+
+        .hero-image {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Features section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title p {
+            font-size: 20px;
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: var(--light-gray);
+        }
+
+        /* Workflow section */
+        .workflow {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            margin-right: 24px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step-content p {
+            color: var(--light-gray);
+        }
+
+        /* Try it section */
+        .try-it {
+            padding: 80px 0;
+        }
+
+        .demo-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 48px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .file-upload {
+            border: 2px dashed #d2d2d7;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 113, 227, 0.05);
+        }
+
+        .file-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .upload-text strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .upload-text span {
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        button.btn {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Pricing section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            transform: scale(1.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-card.featured::before {
+            content: "Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .price small {
+            font-size: 16px;
+            color: var(--light-gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 12px;
+            color: var(--light-gray);
+        }
+
+        /* FAQ section */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+            border-bottom: 1px solid #d2d2d7;
+            padding-bottom: 24px;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            color: var(--light-gray);
+        }
+
+        /* How it works section */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .tech-details {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .tech-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+
+        .tech-card p {
+            margin-bottom: 16px;
+        }
+
+        .code-block {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 64px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #a1a1a6;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a1a1a6;
+            font-size: 14px;
+        }
+
+        /* Backend demo section */
+        .backend-demo {
+            padding: 80px 0;
+            background-color: var(--background-color);
+        }
+
+        .api-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+
+        .api-endpoints {
+            margin-top: 24px;
+        }
+
+        .endpoint {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .method {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 16px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .get {
+            background-color: #e8f5ff;
+            color: #0085ff;
+        }
+
+        .post {
+            background-color: #e3fff1;
+            color: #00b371;
+        }
+
+        .endpoint-path {
+            font-family: monospace;
+            flex-grow: 1;
+        }
+
+        .endpoint-description {
+            color: var(--light-gray);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-card.featured {
+                grid-column: span 2;
+                margin-bottom: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                grid-column: 1;
+                transform: none;
+                margin: 32px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 12px 0;
+            }
+
+            .demo-container {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">ThirdVoiceClone</a>
+                <button class="menu-toggle">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#workflow">How It Works</a></li>
+                    <li><a href="#try-it">Try It</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#tech">Technology</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>AI Voice Cloning Technology</h1>
+            <p>Create your own AI voice clone with just seconds of audio</p>
+            <div class="hero-buttons">
+                <a href="#try-it" class="btn btn-primary">Try It Free</a>
+                <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/1200/600" alt="AI Voice Cloning Demo">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Learn more about AI voice cloning technology</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">How much voice sample time do I need?</div>
+                    <div class="faq-answer">
+                        <p>Theoretically, our technology only needs about 5 seconds of voice sample to create a voice model. However, for higher quality results, we recommend providing a clear voice sample of 30 seconds to 1 minute. The higher the quality of the sample, the more natural the generated AI voice will be.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Which languages are supported?</div>
+                    <div class="faq-answer">
+                        <p>Currently, we support English, Mandarin Chinese, Japanese, Korean, and several other languages. We are constantly expanding our range of supported languages. If you need support for a specific language, please contact our customer service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What are the applications for AI voices?</div>
+                    <div class="faq-answer">
+                        <p>AI voice cloning technology can be applied to various scenarios, including but not limited to: video voiceovers, audiobook production, podcast creation, voice assistants, educational content, advertising, game character voicing, and more. Whether you're a content creator, educator, or business user, you'll find applications that suit your needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do you ensure voice data security?</div>
+                    <div class="faq-answer">
+                        <p>We take user data security very seriously. Your uploaded voice samples are stored with encryption and only used for purposes you authorize. We do not use your voice data to train other models or share it with third parties. You can request deletion of your voice data and models at any time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I use the generated AI voice commercially?</div>
+                    <div class="faq-answer">
+                        <p>Yes, depending on the plan you choose, you can use the generated AI voice for commercial purposes. The Basic plan supports small-scale commercial use, while the Professional and Enterprise plans provide more extensive commercial usage rights. Please refer to our service agreement for detailed terms of use.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Do I need special equipment to record voice samples?</div>
+                    <div class="faq-answer">
+                        <p>No professional equipment is required, but we recommend recording in a quiet environment using a decent microphone to reduce background noise. Smartphone recordings or computer microphones work fine, but the better the recording quality, the better the AI voice results will be.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>ThirdVoiceClone</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Developer Docs</a></li>
+                        <li><a href="#">Tutorial Videos</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Notice</a></li>
+                        <li><a href="#">Compliance Information</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ThirdVoiceClone AI Voice Cloning Technology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ accordion effect
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.style.display = 'none';
+                });
+                
+                document.querySelectorAll('.faq-question').forEach(item => {
+                    item.style.fontWeight = '600';
+                    item.style.color = '';
+                    if (item.textContent.includes('+')) {
+                        item.textContent = item.textContent.replace('-', '+');
+                    }
+                });
+                
+                // If the clicked one wasn't open, open it
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    question.style.fontWeight = '700';
+                    question.style.color = 'var(--primary-color)';
+                    if (question.textContent.includes('+')) {
+                        question.textContent = question.textContent.replace('+', '-');
+                    }
+                }
+            });
+        });
+
+        // Initialize: Open the first FAQ
+        if (faqQuestions.length > 0) {
+            faqQuestions[0].click();
+        }
+
+        // File upload interaction
+        const fileUpload = document.querySelector('.file-upload');
+        fileUpload.addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'audio/*';
+            fileInput.click();
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files && fileInput.files[0]) {
+                    const fileName = fileInput.files[0].name;
+                    const uploadText = fileUpload.querySelector('.upload-text strong');
+                    uploadText.textContent = `Selected file: ${fileName}`;
+                    fileUpload.style.borderColor = 'var(--primary-color)';
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission - connect to backend
+        document.querySelector('.demo-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // This would be where you connect to the MockingBird backend
+            alert('In a production environment, this would send your voice sample to our MockingBird AI system for processing!');
+            
+            // Example of how you might call the backend API
+            // const formData = new FormData();
+            // formData.append('name', document.getElementById('name').value);
+            // formData.append('email', document.getElementById('email').value);
+            // formData.append('text', document.getElementById('text').value);
+            // formData.append('voiceSample', fileInput.files[0]);
+            
+            // fetch('/api/v1/voice/process', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('Success:', data);
+            //     // Handle the response from the server
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+        });
+        
+        // Backend connection simulation
+        console.log('ThirdVoiceClone website loaded successfully');
+        console.log('MockingBird integration ready');
+    </script>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful AI Voice Cloning Features</h2>
+                <p>Based on MockingBird technology, providing state-of-the-art voice cloning</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>High Precision</h3>
+                    <p>Our AI technology captures the unique characteristics of your voice, including tone, rhythm, and accent.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Rapid Processing</h3>
+                    <p>Just a few seconds of voice sample needed, with your personalized AI voice ready in minutes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Multiple Applications</h3>
+                    <p>Suitable for video voiceovers, audiobooks, podcasts, voice assistants, and more.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Your voice data is securely encrypted and only used for purposes you authorize.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multilingual Support</h3>
+                    <p>Support for English, Chinese, and many other languages, making your AI voice universally accessible.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Use Anywhere</h3>
+                    <p>Our platform supports both mobile and desktop devices, letting you create and use AI voices on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="workflow">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple & Easy Workflow</h2>
+                <p>Create your personalized AI voice in just three simple steps</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Voice Sample</h3>
+                        <p>Upload a sample of your voice. As little as 5 seconds can work, but we recommend 30+ seconds of high-quality recording for best results.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Model Training</h3>
+                        <p>Our AI system analyzes your voice characteristics and builds a voice model specifically for you based on MockingBird technology.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Generate AI Voice</h3>
+                        <p>Enter the text you want to convert to speech, and the system will generate natural, expressive voice content using your voice model.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try It Section -->
+    <section id="try-it" class="try-it">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience AI Voice Cloning Now</h2>
+                <p>Try our technology for free and feel the magic of AI voice cloning</p>
+            </div>
+
+            <div class="demo-container">
+                <form class="demo-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Voice Sample</label>
+                        <div class="file-upload">
+                            <div class="file-icon">📤</div>
+                            <div class="upload-text">
+                                <strong>Click or drag files here</strong>
+                                <span>Supports MP3, WAV, M4A formats, max file size 10MB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">Text to Convert</label>
+                        <textarea id="text" rows="4" placeholder="Enter the text you want to convert to voice"></textarea>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Generate AI Voice</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Section -->
+    <section id="tech" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technology Behind VoiceClone</h2>
+                <p>Powered by MockingBird's cutting-edge voice synthesis technology</p>
+            </div>
+
+            <div class="tech-details">
+                <div class="tech-card">
+                    <h3>Based on MockingBird</h3>
+                    <p>Our system is built on the powerful MockingBird framework, an open-source voice cloning system that uses deep learning to create realistic voice models from small audio samples.</p>
+                    <p>MockingBird implements a modified version of the SV2TTS model, with three components:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 16px;">
+                        <li>A speaker encoder that captures the characteristics of a voice</li>
+                        <li>A sequence-to-sequence synthesis network</li>
+                        <li>A vocoder that converts spectrograms to waveforms</li>
+                    </ul>
+                    <div class="code-block">
+                        # Integration with our web application<br>
+                        from synthesizer.inference import Synthesizer<br>
+                        from encoder import inference as encoder<br>
+                        from vocoder import inference as vocoder<br><br>
+                        
+                        # Process voice sample & generate new speech<br>
+                        encoder_path = "encoder/saved_models/pretrained.pt"<br>
+                        vocoder_path = "vocoder/saved_models/pretrained.pt"<br>
+                        syn_path = "synthesizer/saved_models/pretrained.pt"
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <h3>Backend API Integration</h3>
+                    <p>Our web application communicates with the MockingBird backend through a RESTful API system. This allows for seamless processing of voice samples and text-to-speech requests.</p>
+                    <p>The backend handles resource-intensive tasks such as:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 16px;">
+                        <li>Processing and analyzing voice samples</li>
+                        <li>Building voice embedding models</li>
+                        <li>Generating synthesized speech</li>
+                        <li>Managing user accounts and voice libraries</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backend Demo Section -->
+    <section class="backend-demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Backend API Overview</h2>
+                <p>Our RESTful API architecture powers the VoiceClone platform</p>
+            </div>
+
+            <div class="api-card">
+                <h3>API Endpoints</h3>
+                <p>The VoiceClone backend exposes several endpoints for voice processing and synthesis:</p>
+
+                <div class="api-endpoints">
+                    <div class="endpoint">
+                        <div class="method post">POST</div>
+                        <div>
+                            <div class="endpoint-path">/api/v1/voice/upload</div>
+                            <div class="endpoint-description">Upload a voice sample for processing</div>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="method get">GET</div>
+                        <div>
+                            <div class="endpoint-path">/api/v1/voice/models</div>
+                            <div class="endpoint-description">List all voice models for the authenticated user</div>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="method post">POST</div>
+                        <div>
+                            <div class="endpoint-path">/api/v1/voice/synthesize</div>
+                            <div class="endpoint-description">Convert text to speech using a specified voice model</div>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="method get">GET</div>
+                        <div>
+                            <div class="endpoint-path">/api/v1/voice/download/{id}</div>
+                            <div class="endpoint-description">Download a generated voice file</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block" style="margin-top: 32px;">
+                    # Example API request to synthesize speech<br>
+                    import requests<br>
+                    import json<br><br>
+                    
+                    url = "https://api.thirdvoiceclone.com/api/v1/voice/synthesize"<br>
+                    headers = {<br>
+                    &nbsp;&nbsp;"Authorization": "Bearer YOUR_API_KEY",<br>
+                    &nbsp;&nbsp;"Content-Type": "application/json"<br>
+                    }<br><br>
+                    
+                    data = {<br>
+                    &nbsp;&nbsp;"model_id": "user_voice_12345",<br>
+                    &nbsp;&nbsp;"text": "Hello world! This is my cloned voice speaking."<br>
+                    }<br><br>
+                    
+                    response = requests.post(url, headers=headers, data=json.dumps(data))
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Flexible Pricing Plans</h2>
+                <p>Choose the plan that best suits your needs and start your AI voice cloning journey</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$9.99<small>/month</small></div>
+                    <ul class="pricing-features">
+                        <li>30 minutes of AI voice generation per month</li>
+                        <li>1 voice model</li>
+                        <li>Standard voice quality</li>
+                        <li>Web export</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Choose Basic</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$29.99<small>/month</small></div>
+                    <ul class="pricing-features">
+                        <li>120 minutes of AI voice generation per month</li>
+                        <li>3 voice models</li>
+                        <li>High-quality voice</li>
+                        <li>Multiple export formats</li>
+                        <li>Emotion control</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Choose Professional</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$69.99<small>/month</small></div>
+                    <ul class="pricing-features">
+                        <li>300 minutes of AI voice generation per month</li>
+                        <li>10 voice models</li>
+                        <li>Ultra-high quality voice</li>
+                        <li>API access</li>
+                        <li>Advanced emotion control</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Choose Enterprise</a>
+                </div>
+                
